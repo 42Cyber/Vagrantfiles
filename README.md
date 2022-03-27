@@ -1,2 +1,5 @@
 # Vagrantfiles
-Vagrant scripts to run specific machines for the Cybersecurity Bootcamp
+
+Vagrant scripts to run specific machines for the Cybersecurity Bootcamp.
+
+Be sure Vagrant is installed on your system before running these scripts.
