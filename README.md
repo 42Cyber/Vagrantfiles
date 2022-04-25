@@ -52,13 +52,49 @@ Las máquinas de Vagrant crean una carpeta compartida en el disco duro de la má
 [https://www.vagrantup.com/docs/synced-folders](https://www.vagrantup.com/docs/synced-folders)
 
 
-
-
 ## Docker
 
-Docker permite levantar máquinas virtuales ligeras porque comparte los recursos del sistema físico.
+Docker permite levantar máquinas virtuales ligeras porque comparte los recursos del sistema físico. En 42 Madrid tenemos una versión de 2019 de Docker porque el staff no sabe actualizarlo a la versión más reciente.
+Por lo tanto, para hacer que funcione tenemos que seguir los siguientes pasos:
 
+- Desinstalar Docker y reinstalarlo desde el MSC.
+- Configurar Docker para que descargue los contenedores en /goinfre:
 
-### Requisitos
+    Descargamos 42 Toolbox
+    ````
+    git clone https://github.com/alexandregv/42toolbox.git ~/.42toolbox
+    ````
+    Cada vez que queramos iniciar Docker:
+    ````
+    yes | bash ~/.42toolbox/init_docker.sh
+    ````
 
-| Nombre | Descripción |
+### Ejemplos de uso de Docker
+
+Para lanzar una máquina virtual (sin entorno de escritorio) con la carpeta actual compartida en la máquina virtual:
+```
+docker run  -it \
+            --mount type=bind,source=$PWD,target=/workspace \
+            --workdir=/workspace \
+            --name=ubuntu \
+            ubuntu bash
+```
+
+- it: para que se ejecute en modo interactivo.
+- --mount: para montar la carpeta actual en la máquina virtual, en la ruta /workspace.
+- --workdir: para que la carpeta actual sea la carpeta de trabajo de la máquina virtual.
+- --name: nombre del contenedor
+- ubuntu: imagen a lanzar
+- bash: comando a ejecutar en la máquina virtual.
+
+Si queremos abrir puertos para poder lanzar un servidor u otro servicio, podemos hacerlo con un comando:
+```
+docker run  -it \
+            -p 80:80 \
+            --mount type=bind,source=$PWD,target=/workspace \
+            --workdir=/workspace \
+            --name=ubuntu \
+            ubuntu bash
+```
+
+Cambiando 80:80 por los puertos EXTERIOR:INTERIOR que queremos abrir. Esto nos permitiría acceder por ssh a la máquina o levantar servicios web y entrar desde el navegador.
