@@ -13,9 +13,12 @@ Pero para eso tenemos una solución:
  - Comprobamos que Vagrant y Virtualbox están actualizados en el MSC
  - Ejecutamos:
 ````
-curl https://raw.githubusercontent.com/42Cyber/Vagrantfiles/main/move_vagrant_to_goinfre.sh | bash -ex
+rm -rf ~/.vagrant* 
+mkdir -p /goinfre/.vagrant.d
+ln -s /goinfre/.vagrant.d ~/.vagrant.d
+vagrant plugin expunge --reinstall --force
 ````
- - Ejecutamos:
+
 
 
 ## Docker
