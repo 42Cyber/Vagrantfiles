@@ -110,7 +110,7 @@ Visual Studio Code nos permite conectarnos por ssh a un contenedor de forma tran
 - Ejecutamos en la consola el siguiente comando:
 ```
 cat << EOF
-FROM ubuntu:latest
+FROM debian:bullseye
 RUN apt-get update && apt-get install -y \
     curl nginx make git vim man net-tools gcc python3 python3-pip
 EOF > Dockerfile
