@@ -48,7 +48,7 @@ En 42 hay tres formas de ampliar nuestros 5 GB:
 - /tmp es una carpeta local que utiliza todo el disco duro, por lo que disponemos de 1TB de espacio.
     El problema es que los archivos se borran si no los utilizamos durante un tiempo determinado (3 días por defecto). Por lo tanto: todos los archivos que queráis conservar, utilizadlos desde las carpetas compartidas y haced commits regulares a un repositorio remoto.
 
-![](vbox.png)
+![](imgs/vbox.png)
 
 Las máquinas de Vagrant crean una carpeta compartida en el disco duro de la máquina virtual.
 [https://www.vagrantup.com/docs/synced-folders](https://www.vagrantup.com/docs/synced-folders)
@@ -100,3 +100,23 @@ docker run  -it \
 ```
 
 Cambiando 80:80 por los puertos EXTERIOR:INTERIOR que queremos abrir. Esto nos permitiría acceder por ssh a la máquina o levantar servicios web y entrar desde el navegador.
+
+### Integrando Docker con VS Code
+
+Visual Studio Code nos permite conectarnos por ssh a un contenedor de forma transparente para trabajar en un entorno Linux con permisos de administrador. Para ello, debemos instalar la extesión [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
+- Abrimos en VSCode la carpeta del proyecto en el que queramos trabajar:
+- Ejecutamos en la consola el siguiente comando:
+```
+cat << EOF
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+    curl nginx make git 
+EOF
+````
+
+
+
+- Hacemos click en la esquina inferior izquierda de VSCode
+![](imgs/remote.png)
+- Hacemos click en "Reopen in Container" y elegimos "From Dockerfile"
