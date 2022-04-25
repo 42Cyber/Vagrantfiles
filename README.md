@@ -45,14 +45,16 @@ En 42 hay tres formas de ampliar nuestros 5 GB:
 - Utilizar goinfre/ o sgoinfre/
     - goinfre no tiene límite de espacio pero se borra en intervalos impredecibles.
     - sgoinfre nos permite utilizar 15 GB pero si nos sobrepasamos, se borran todos los datos. Usar con precaución.
-    - /tmp es una carpeta local que utiliza todo el disco duro, por lo que disponemos de 1TB de espacio.
+- /tmp es una carpeta local que utiliza todo el disco duro, por lo que disponemos de 1TB de espacio.
     El problema es que los archivos se borran si no los utilizamos durante un tiempo determinado (3 días por defecto). Por lo tanto: todos los archivos que queráis conservar, utilizadlos desde las carpetas compartidas y haced commits regulares a un repositorio remoto.
+
+![](vbox.png)
 
 Las máquinas de Vagrant crean una carpeta compartida en el disco duro de la máquina virtual.
 [https://www.vagrantup.com/docs/synced-folders](https://www.vagrantup.com/docs/synced-folders)
 
 
-## Docker
+# Docker
 
 Docker permite levantar máquinas virtuales ligeras porque comparte los recursos del sistema físico. En 42 Madrid tenemos una versión de 2019 de Docker porque el staff no sabe actualizarlo a la versión más reciente.
 Por lo tanto, para hacer que funcione tenemos que seguir los siguientes pasos:
