@@ -115,11 +115,24 @@ RUN apt-get update && apt-get install -y \
     curl nginx make git vim man net-tools gcc python3 python3-pip
 EOF > Dockerfile
 ```
+
+Todos los paquetes que añadamos al Dockerfile serán persistentes. En cambio, si después instalamos cualquier otro paquete durante la ejecución del contenedor, perderemos los cambios al cerrarlo.
+
+```
+docker build -t <nombre> .
+```
+Para ejecutarla:
+```
+docker run  -it \
+            --mount type=bind,source=$PWD,target=/workspace \
+            --workdir=/workspace \
+            --name=ubuntu \
+            <nombre> bash
+```
+
 El dockerfile del ejemplo instala Ubuntu. Podemos elegir otra distribución linux, Debian, Fedora, etc. Para instalar programas, añádelos a la línea junto a ``curl nginx make ...``
 
 - Hacemos click en la esquina inferior izquierda de VSCode
-
-
 ![](imgs/remote.png)
 - Hacemos click en "Reopen in Container" y elegimos "From Dockerfile"
 
