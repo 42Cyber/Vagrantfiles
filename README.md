@@ -112,11 +112,12 @@ cat << EOF
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     curl nginx make git 
-EOF
-````
-
-
+EOF > Dockerfile
+```
 
 - Hacemos click en la esquina inferior izquierda de VSCode
 ![](imgs/remote.png)
 - Hacemos click en "Reopen in Container" y elegimos "From Dockerfile"
+
+De ahora en adelante, podremos trabajar en el entorno linux que queramos.
+El dockerfile del ejemplo instala Ubuntu. Podemos elegir otra distribución linux, Debian, Fedora, etc. Para instalar programas, añádelos a la línea junto a ``curl nginx make ...``
