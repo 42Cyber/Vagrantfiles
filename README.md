@@ -1,4 +1,4 @@
-# Vagrantfiles
+# Cómo trabajar con máquinas virtuales
 
 Vagrant scripts to run specific machines for the Cybersecurity Bootcamp.
 
