@@ -5,4 +5,4 @@
 set -e
 
 vagrant init dvgamerr/win-xp-sp3
-vagrant up
+vagrant up --provider=virtualbox
