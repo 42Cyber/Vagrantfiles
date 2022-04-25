@@ -74,6 +74,7 @@ Por lo tanto, para hacer que funcione tenemos que seguir los siguientes pasos:
 ### Ejemplos de uso de Docker
 
 Para lanzar una máquina virtual (sin entorno de escritorio) con la carpeta actual compartida en la máquina virtual:
+
 ```
 docker run  -it \
             --mount type=bind,source=$PWD,target=/workspace \
@@ -117,6 +118,8 @@ EOF > Dockerfile
 El dockerfile del ejemplo instala Ubuntu. Podemos elegir otra distribución linux, Debian, Fedora, etc. Para instalar programas, añádelos a la línea junto a ``curl nginx make ...``
 
 - Hacemos click en la esquina inferior izquierda de VSCode
+
+
 ![](imgs/remote.png)
 - Hacemos click en "Reopen in Container" y elegimos "From Dockerfile"
 
